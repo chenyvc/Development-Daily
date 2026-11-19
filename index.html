@@ -1,1 +1,122 @@
-待更新
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我的國際援助日報・2026-11-19</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+  /* 只要改「我的設定」的主色，整頁的重點色就跟著換 */
+  :root {
+    --accent: #b0412e;
+    --paper: #f6f3ec; --card: #ffffff; --ink: #1c1a17; --soft: #5c5850; --faint: #8f8a80;
+    --line: #e3ddd1; --tint: color-mix(in srgb, var(--accent) 9%, var(--card));
+    --serif: "Noto Serif TC", "Songti TC", serif;
+    --sans: "Noto Sans TC", -apple-system, "PingFang TC", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #16150f; --card: #211f19; --ink: #f1ede4; --soft: #c2bcb0; --faint: #8b857a;
+      --line: #36322a; --tint: color-mix(in srgb, var(--accent) 18%, var(--card));
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; overflow-wrap: anywhere; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* 刊頭 */
+  header.wrap { padding-top: 28px; }
+  .dateline { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--soft); border-bottom: 1px solid var(--ink); padding-bottom: 8px; }
+  header h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 8vw, 64px); line-height: 1.15; text-align: center; margin: 18px 0 12px; letter-spacing: .04em; }
+  header h1::after { content: ""; display: block; width: 56px; height: 4px; background: var(--accent); margin: 14px auto 0; border-radius: 2px; }
+  .edition { text-align: center; color: var(--soft); font-size: 14px; margin: 0 0 18px; }
+  .edition b { color: var(--accent); }
+
+  /* 分類導覽：手機可以左右滑 */
+  nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-top: 3px double var(--ink); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+  nav a { flex: none; font-size: 14px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); white-space: nowrap; }
+  nav a b { margin-left: 6px; color: var(--accent); font-weight: 700; }
+  nav a:hover { border-color: var(--accent); }
+
+  main.wrap { padding-top: 28px; padding-bottom: 40px; }
+  .eyebrow { font-size: 12px; letter-spacing: .2em; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+
+  /* 今日首選 */
+  .pick { position: relative; background: var(--card); border-radius: 18px; padding: 28px 32px; margin-bottom: 36px; box-shadow: 0 1px 0 var(--line), 0 18px 40px -24px rgba(0,0,0,.25); overflow: hidden; }
+  .pick::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--accent); }
+  .pick-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+  .pick h2 { margin: 0; font-size: 14px; letter-spacing: .2em; color: var(--accent); }
+  .pick-score { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--soft); }
+  .dots { display: inline-flex; gap: 4px; }
+  .dots i { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--accent); }
+  .dots i.on { background: var(--accent); }
+  .pick h3 { font-family: var(--serif); font-weight: 900; font-size: clamp(24px, 3.6vw, 36px); line-height: 1.4; margin: 14px 0 14px; }
+  .pick h3 a:hover { color: var(--accent); }
+  .pick-why { background: var(--tint); border-radius: 12px; padding: 14px 18px; margin: 0 0 16px; font-size: 16px; }
+  .pick-why strong { color: var(--accent); }
+  .pick-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pick-tags span { background: var(--accent); color: #fff; border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 500; }
+  .pick .meta { margin: 14px 0 0; color: var(--faint); font-size: 13px; }
+
+  /* 本週熱詞 */
+  div.hot { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px 26px; margin-bottom: 40px; }
+  div.hot h2 { font-family: var(--serif); font-size: 22px; margin: 0; }
+  div.hot > p { margin: 2px 0 14px; color: var(--faint); font-size: 13px; }
+  div.hot ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px 28px; }
+  div.hot li { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  div.hot .word { font-weight: 700; }
+  div.hot .word b { display: inline-block; font-size: 11px; line-height: 1; padding: 4px 7px; border-radius: 6px; background: var(--accent); color: #fff; margin-left: 4px; vertical-align: 2px; }
+  div.hot .word b.b-new { background: var(--ink); color: var(--paper); }
+  div.hot .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  div.hot .bar span { display: block; height: 100%; background: var(--faint); border-radius: 3px; }
+  div.hot li.hot .bar span, div.hot li.new .bar span { background: var(--accent); }
+  div.hot .num { font-size: 12px; color: var(--faint); }
+
+  /* 各類別 */
+  section.cat { margin-bottom: 40px; scroll-margin-top: 64px; }
+  section.cat h2 { font-family: var(--serif); font-size: 26px; margin: 0 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); display: flex; align-items: baseline; gap: 10px; }
+  section.cat h2 small { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; transition: transform .15s ease, box-shadow .15s ease; }
+  article:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -18px rgba(0,0,0,.35); }
+  article .src { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 6px; font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: .04em; }
+  article .src time { color: var(--faint); font-weight: 400; }
+  article h3 { font-family: var(--serif); font-size: 19px; line-height: 1.5; margin: 0 0 10px; }
+  article h3 a:hover { color: var(--accent); }
+  .short { font-weight: 700; margin: 0 0 6px; }
+  .long { color: var(--soft); font-size: 15px; margin: 0 0 12px; }
+  .kws { margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .kw { font-size: 12px; padding: 2px 9px; border-radius: 999px; background: var(--paper); color: var(--soft); border: 1px solid var(--line); }
+  .kw.is-hot { color: var(--accent); border-color: var(--accent); font-weight: 700; }
+
+  footer { border-top: 1px solid var(--line); padding: 20px 0 40px; color: var(--faint); font-size: 13px; text-align: center; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .pick { padding: 22px 20px 22px 24px; border-radius: 14px; }
+    div.hot { padding: 18px; }
+    .grid { grid-template-columns: 1fr; }
+    .dateline span:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="dateline"><span>2026-11-19・台北時間</span><span>資料期間 2026-11-13 至 2026-11-19 對比 2026-10-23 至 2026-11-12</span></div>
+  <h1>我的國際援助日報</h1>
+  <p class="edition">本期 <b>20</b> 則・由 n8n 與 Gemini 自動編輯</p>
+</header>
+<nav aria-label="新聞分類"><div class="wrap"><a href="#cat-2">國際夥伴關係與多邊合作<b>2</b></a><a href="#cat-11">數位治理與科技合作<b>3</b></a><a href="#cat-12">性別平等與社會包容<b>2</b></a><a href="#cat-14">地緣政治<b>11</b></a><a href="#cat-15">其他<b>2</b></a></div></nav>
+<main class="wrap">
+  <section class="pick" aria-labelledby="pick-title"><div class="pick-heading"><h2 id="pick-title">今日首選</h2><span class="pick-score"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>4 分／滿分 4 分</span></div><h3><a href="https://www.cna.com.tw/news/aopl/202611190111.aspx" target="_blank" rel="noopener noreferrer">輝達預告12月加薪留才　高層揭示擴大AI工廠業務</a></h3><p class="pick-why"><strong>為什麼值得發：</strong>點名知名公司且涉及加薪與業務擴張等工作關聯。</p><div class="pick-tags"><span>在地／點名</span><span>具體</span><span>跟工作有關</span><span>熱詞</span></div><p class="meta">中央社・數位治理與科技合作</p></section>
+  <div class="hot"><p class="eyebrow">TRENDING</p><h2>本週熱詞</h2><p>本週出現次數對比前三週平均（Asia/Taipei）</p><ul><li class="hot"><span class="word">APEC <b>熱</b></span><span class="bar"><span style="width:100%"></span></span><span class="num">本週 8 次・平常每週 0.67 次・5.4 倍</span></li><li class="hot"><span class="word">普丁 <b>熱</b></span><span class="bar"><span style="width:100%"></span></span><span class="num">本週 5 次・平常每週 0.33 次・4.5 倍</span></li><li class="hot"><span class="word">習近平 <b>熱</b></span><span class="bar"><span style="width:100%"></span></span><span class="num">本週 5 次・平常每週 0.33 次・4.5 倍</span></li><li class="hot"><span class="word">黃仁勳 <b>熱</b></span><span class="bar"><span style="width:100%"></span></span><span class="num">本週 87 次・平常每週 19.67 次・4.26 倍</span></li><li class="hot"><span class="word">出口管制 <b>熱</b></span><span class="bar"><span style="width:100%"></span></span><span class="num">本週 6 次・平常每週 0.67 次・4.2 倍</span></li><li class="hot"><span class="word">盧特尼克 <b>熱</b> <b class="b-new">新</b></span><span class="bar"><span style="width:100%"></span></span><span class="num">本週 3 次・平常每週 0 次・4 倍</span></li><li class="hot"><span class="word">川普 <b>熱</b></span><span class="bar"><span style="width:83%"></span></span><span class="num">本週 19 次・平常每週 5 次・3.33 倍</span></li><li class="hot"><span class="word">輝達 <b>熱</b></span><span class="bar"><span style="width:83%"></span></span><span class="num">本週 83 次・平常每週 24.33 次・3.32 倍</span></li><li class="hot"><span class="word">商務部長 <b>熱</b></span><span class="bar"><span style="width:75%"></span></span><span class="num">本週 3 次・平常每週 0.33 次・3 倍</span></li><li class="new"><span class="word">AI工廠 <b class="b-new">新</b></span><span class="bar"><span style="width:75%"></span></span><span class="num">本週 2 次・平常每週 0 次・3 倍</span></li></ul></div>
+  <section class="cat" id="cat-2"><h2>國際夥伴關係與多邊合作 <small>2 則</small></h2><div class="grid"><article><p class="src">中央社<time>11/19 12:38</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190115.aspx" target="_blank" rel="noopener noreferrer">限韓令現鬆綁契機　青瓦台高層：舉辦演唱會仍有可能</a></h3><p class="short">韓中 FTA 達成協議，限韓令現鬆綁契機。</p><p class="long">韓國與中國宣布自由貿易協定（FTA）實質達成協議，被外界視為「限韓令」鬆綁的訊號。青瓦台高層指出，儘管中方對 K-pop 演唱會仍有敏感考量，但並未明文禁止。目前評估在中國舉辦韓星演出的可能性依然存在。</p><p class="kws"><span class="kw">FTA</span><span class="kw">限韓令</span><span class="kw">青瓦台</span><span class="kw">K-pop</span></p></article><article><p class="src">中央社<time>11/19 11:10</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190059.aspx" target="_blank" rel="noopener noreferrer">緬甸總統不滿東協施壓　稱正重新評估雙邊關係</a></h3><p class="short">緬甸總統不滿東協施壓，評估關係並計畫和平會議。</p><p class="long">緬甸總統敏昂萊（Min Aung Hlaing）表示正重新評估與東協（ASEAN）的關係。他計畫於 2028 年 2 月召開和平會議，目標在 5 年任期內結束衝突。儘管關係緊張，緬甸仍計畫維持與各成員國的溝通。</p><p class="kws"><span class="kw">敏昂萊</span><span class="kw">東協</span><span class="kw">和平會議</span><span class="kw">緬甸</span></p></article></div></section><section class="cat" id="cat-11"><h2>數位治理與科技合作 <small>3 則</small></h2><div class="grid"><article><p class="src">中央社<time>11/19 12:30</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190111.aspx" target="_blank" rel="noopener noreferrer">輝達預告12月加薪留才　高層揭示擴大AI工廠業務</a></h3><p class="short">輝達預告 12 月加薪，代理執行長揭示擴大 AI 業務。</p><p class="long">輝達（NVIDIA）召開黃仁勳請辭後的首場員工大會。代理執行長克瑞斯（Colette Kress）預告將於 12 月加薪並提供股票獎勵以留住人才。公司高層同時揭示了未來擴大人工智慧（AI）工廠業務的計畫。</p><p class="kws"><span class="kw is-hot">輝達</span><span class="kw">NVIDIA</span><span class="kw">加薪</span><span class="kw is-hot">AI工廠</span></p></article><article><p class="src">中央社<time>11/19 11:23</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190066.aspx" target="_blank" rel="noopener noreferrer">美擴大先進半導體出口管制　馬來西亞尋求釐清資料中心服務規範</a></h3><p class="short">大馬尋求美方釐清 AI 晶片管制與資料中心規範。</p><p class="long">美國擴大先進半導體出口管制，馬來西亞等五國被納入許可規範。大馬投貿部長佐哈里（Zafrul Aziz）正尋求美方說明人工智慧（AI）晶片限制。此規範涉及向第三方提供資料中心服務的具體營運準則。</p><p class="kws"><span class="kw">半導體</span><span class="kw is-hot">出口管制</span><span class="kw">人工智慧</span><span class="kw">資料中心</span></p></article><article><p class="src">中央社<time>11/19 11:10</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190060.aspx" target="_blank" rel="noopener noreferrer">川普：與習近平晚宴整晚談AI　僅簡短提及黃仁勳</a></h3><p class="short">川普與習近平晚宴大談 AI，簡短提及黃仁勳。</p><p class="long">美國總統川普透露，他與中國國家主席習近平在晚宴期間針對人工智慧（AI）進行深入交流。習近平對美國在 AI 領域的成就表示驚訝。席間雙方也簡短提到了輝達（NVIDIA）前執行長黃仁勳。</p><p class="kws"><span class="kw is-hot">川普</span><span class="kw is-hot">習近平</span><span class="kw">人工智慧</span><span class="kw is-hot">黃仁勳</span></p></article></div></section><section class="cat" id="cat-12"><h2>性別平等與社會包容 <small>2 則</small></h2><div class="grid"><article><p class="src">《衛報》全球發展<time>11/19 12:00</time></p><h3><a href="https://www.theguardian.com/global-development/2026/nov/19/women-girls-rights-rape-sexual-violence-africa-marriage-unfpa" target="_blank" rel="noopener noreferrer">One in four women globally unable to refuse sex within marriage, says UN</a></h3><p class="short">聯合國報告：全球四分之一女性無法拒絕婚內性行為。</p><p class="long">聯合國人口基金（UNFPA）研究指出，全球每四名女性中就有一人無法在婚姻中拒絕性行為。西非與中非地區受影響最深，近半數女性缺乏性自主權。報告特別強調女童是此現象中受害最嚴重的群體。</p><p class="kws"><span class="kw">UNFPA</span><span class="kw">聯合國人口基金</span><span class="kw">性自主權</span><span class="kw">婚內性行為</span></p></article><article><p class="src">中央社<time>11/19 11:40</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190083.aspx" target="_blank" rel="noopener noreferrer">國際法院將裁決緬甸涉洛興雅種族滅絕案　判決受關注</a></h3><p class="short">國際法院將裁決緬甸涉洛興雅種族滅絕案。</p><p class="long">聯合國國際法院（International Court of Justice）將對甘比亞控告緬甸種族滅絕案公布判決。判決預計在海牙時間上午 10 時開始宣讀，時程約 90 分鐘。此案涉及緬甸對洛興雅（Rohingya）人的迫害行為。</p><p class="kws"><span class="kw">國際法院</span><span class="kw">緬甸</span><span class="kw">洛興雅</span><span class="kw">種族滅絕</span></p></article></div></section><section class="cat" id="cat-14"><h2>地緣政治 <small>11 則</small></h2><div class="grid"><article><p class="src">中央社<time>11/19 12:48</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190123.aspx" target="_blank" rel="noopener noreferrer">高市早苗連2天與習近平握手　訪中行程遭中國官媒冷處理</a></h3><p class="short">高市早苗訪中出席 APEC，與習近平握手交談遭冷處理。</p><p class="long">日本首相高市早苗於中國深圳出席亞太經濟合作會議（APEC）峰會。她在會中與中國國家主席習近平握手並主動交談約 11 秒。然而，中國官媒對此行程採取冷處理，報報導中鮮少出現高市的身影。</p><p class="kws"><span class="kw">高市早苗</span><span class="kw is-hot">習近平</span><span class="kw">亞太經濟合作會議</span><span class="kw">深圳</span></p></article><article><p class="src">中央社<time>11/19 12:43</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190121.aspx" target="_blank" rel="noopener noreferrer">川普與普丁APEC場邊會談　川普期待「好的開始」</a></h3><p class="short">川普與普丁於深圳 APEC 舉行場邊會談。</p><p class="long">美國總統川普與俄國總統普丁（Vladimir Putin）於深圳亞太經合會（APEC）舉行場邊雙邊會面。川普在開場握手時對普丁表示這將會是一個「好的開始」。雙方對此次會晤展現出積極的期待態度。</p><p class="kws"><span class="kw is-hot">川普</span><span class="kw is-hot">普丁</span><span class="kw">亞太經合會</span><span class="kw">場邊會談</span></p></article><article><p class="src">中央社<time>11/19 12:43</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190120.aspx" target="_blank" rel="noopener noreferrer">馬斯克批澤倫斯基說謊　另稱砸重金助選共和黨「很愚蠢」</a></h3><p class="short">馬斯克指控澤倫斯基說謊，並反思助選共和黨之舉。</p><p class="long">美國太空探索科技公司（SpaceX）執行長馬斯克（Elon Musk）指控烏克蘭總統澤倫斯基在「星盾」網路使用上說謊。他認為烏方實際目的是減少「星鏈（Starlink）」系統的限制。此外，馬斯克對自己在期中選舉砸重金助選共和黨感到愚蠢。</p><p class="kws"><span class="kw">馬斯克</span><span class="kw">澤倫斯基</span><span class="kw">星盾</span><span class="kw">星鏈</span><span class="kw">共和黨</span></p></article><article><p class="src">中央社<time>11/19 12:30</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190110.aspx" target="_blank" rel="noopener noreferrer">川金會傳聞再起　金正恩視察海軍大學要求強化戰力</a></h3><p class="short">金正恩視察海軍大學，外界傳聞將舉行川金會。</p><p class="long">北韓領導人金正恩近日視察海軍大學與多處建築工地，要求軍隊強化戰力。與此同時，外界盛傳金正恩可能於本週在中國與美國總統川普舉行峰會。北韓官媒報導了此次視察，展現對國防與建設的關注。</p><p class="kws"><span class="kw">金正恩</span><span class="kw">海軍大學</span><span class="kw">川金會</span><span class="kw">北韓</span></p></article><article><p class="src">中央社<time>11/19 12:20</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190103.aspx" target="_blank" rel="noopener noreferrer">睽違9年重返APEC　普丁稱俄國是亞太不可或缺一員</a></h3><p class="short">普丁睽違 9 年重返 APEC，強調俄國能源安全貢獻。</p><p class="long">俄羅斯總統普丁（Vladimir Putin）出席深圳亞太經合會（APEC），表示俄國是區域不可或缺的一員。他呼籲各國利用俄國的物流基礎設施以強化合作。普丁強調，俄國正持續為區域糧食與能源安全作出貢獻。</p><p class="kws"><span class="kw is-hot">普丁</span><span class="kw">亞太經合會</span><span class="kw is-hot">APEC</span><span class="kw">能源安全</span></p></article><article><p class="src">中央社<time>11/19 12:17</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190100.aspx" target="_blank" rel="noopener noreferrer">美商務部長遭疑助兒子公司避輝達風波　民主黨議員喊查</a></h3><p class="short">美商務部長遭調查，疑助兒子規避輝達風波損失。</p><p class="long">美國商務部長盧特尼克（Howard Lutnick）因輝達（NVIDIA）前執行長風波受到民主黨議員審查。調查重點在於其是否利用職權，協助兒子執掌的投資公司規避損失。輝達目前因與中企往來正接受審查。</p><p class="kws"><span class="kw is-hot">輝達</span><span class="kw is-hot">盧特尼克</span><span class="kw is-hot">商務部長</span><span class="kw">投資公司</span></p></article><article><p class="src">中央社<time>11/19 11:54</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190090.aspx" target="_blank" rel="noopener noreferrer">川普普丁出席APEC峰會　美官員證實將舉行雙邊會談</a></h3><p class="short">美國官員證實川普與普丁將在 APEC 舉行雙邊會談。</p><p class="long">美國官員向法新社證實，總統川普今日將在深圳 APEC 峰會場邊與俄羅斯總統普丁會晤。這場雙邊會談受到國際高度關注，旨在探討美俄雙邊關係。會議地點選在亞太經濟合作會議的場邊進行。</p><p class="kws"><span class="kw is-hot">川普</span><span class="kw is-hot">普丁</span><span class="kw is-hot">APEC</span><span class="kw">雙邊會談</span></p></article><article><p class="src">中央社<time>11/19 11:31</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190078.aspx" target="_blank" rel="noopener noreferrer">川普淡化核武軍控　另稱伊朗戰局無需俄中幫忙</a></h3><p class="short">川普談伊朗戰局，稱無需俄中協助且淡化軍控稽查。</p><p class="long">美國總統川普表示，解決伊朗戰爭不打算尋求俄羅斯與中國的協助。他同時淡化了向俄中提出核武稽查的必要性，稱美方情報已掌握一切。川普強調美方在軍事情報上的優勢與獨立處理能力。</p><p class="kws"><span class="kw is-hot">川普</span><span class="kw">伊朗</span><span class="kw">核武軍控</span><span class="kw">情報</span></p></article><article><p class="src">中央社<time>11/19 10:50</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190052.aspx" target="_blank" rel="noopener noreferrer">習近平川普普丁APEC合影　美中俄三方峰會前同框</a></h3><p class="short">美中俄領袖 APEC 合影，隨後舉行三方峰會。</p><p class="long">中國國家主席習近平、美國總統川普與俄羅斯總統普丁於 APEC 峰會上同框合影。此次合影發生在備受矚目的美中俄三方峰會召開之前。三國領導人在深圳的互動成為本次亞太經合會的焦點。</p><p class="kws"><span class="kw is-hot">習近平</span><span class="kw is-hot">川普</span><span class="kw is-hot">普丁</span><span class="kw is-hot">APEC</span></p></article><article><p class="src">中央社<time>11/19 10:48</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190051.aspx" target="_blank" rel="noopener noreferrer">川普亞洲行第2天　普丁主動握手致意、菲律賓大打炸雞外交</a></h3><p class="short">川普訪中展開三方峰會，普丁主動握手致意。</p><p class="long">美國總統川普抵達中國，準備與習近平及普丁舉行史無前例的三方峰會。普丁在會場主動向川普握手致意，菲律賓則在場邊展示外交互動。此行程被視為川普亞洲行中最受矚目的一站。</p><p class="kws"><span class="kw is-hot">川普</span><span class="kw is-hot">普丁</span><span class="kw is-hot">習近平</span><span class="kw">三方峰會</span></p></article><article><p class="src">中央社<time>11/19 10:28</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190045.aspx" target="_blank" rel="noopener noreferrer">本週3度遭烏克蘭襲擊　克里米亞大橋交通暫時中斷</a></h3><p class="short">克里米亞大橋本週三度遭襲，交通暫時中斷。</p><p class="long">連結俄羅斯與克里米亞的戰略橋梁本週第三度遭到烏克蘭攻擊。克里米亞首長阿克瑟諾夫（Sergei Aksyonov）證實交通已中斷。該橋梁日前才因襲擊導致部分坍塌，目前損害情況持續受關注。</p><p class="kws"><span class="kw">克里米亞大橋</span><span class="kw">烏克蘭</span><span class="kw">交通中斷</span><span class="kw">戰略橋梁</span></p></article></div></section><section class="cat" id="cat-15"><h2>其他 <small>2 則</small></h2><div class="grid"><article><p class="src">中央社<time>11/19 12:38</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190113.aspx" target="_blank" rel="noopener noreferrer">研究：穆斯林生育率高　伊斯蘭教2035年前後將成全球第一大宗教</a></h3><p class="short">研究預測伊斯蘭教將於 2035 年成為全球最大宗教。</p><p class="long">美國智庫皮尤研究中心（Pew Research Center）發布預測報告。由於穆斯林生育率高於其他宗教，伊斯蘭教預計將在 2035 年前後超越基督教。屆時伊斯蘭教將正式成為全球規模最大的宗教。</p><p class="kws"><span class="kw">皮尤研究中心</span><span class="kw">穆斯林</span><span class="kw">伊斯蘭教</span><span class="kw">生育率</span></p></article><article><p class="src">中央社<time>11/19 11:31</time></p><h3><a href="https://www.cna.com.tw/news/aopl/202611190077.aspx" target="_blank" rel="noopener noreferrer">海地總統摩依士遇刺案　美聯邦陪審團裁定海地裔美籍牧師有罪</a></h3><p class="short">海地總統刺殺案，海地裔美籍牧師被裁定有罪。</p><p class="long">美國邁阿密聯邦陪審團裁定，一名海地裔美籍牧師涉及 2021 年海地總統摩依士（Jovenel Moise）遇刺案。該牧師相關罪名成立，為此宗跨國謀殺案的法律程序進展。該案發生於 2021 年，引發國際震驚。</p><p class="kws"><span class="kw">海地</span><span class="kw">摩依士</span><span class="kw">聯邦陪審團</span><span class="kw">刺殺案</span></p></article></div></section>
+</main>
+<footer><div class="wrap">這份日報每天早上由我自己做的 n8n 流程自動產生</div></footer>
+</body>
+</html>
